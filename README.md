@@ -1,60 +1,228 @@
-# -CrewAI-MultiAgent-YouTube-Trend-Analyzer-OpenRouter-
-The YouTube Trend Analysis Agent is a CrewAI-based multi-agent system that automates YouTube market intelligence . It uses a vendor-agnostic architecture powered by OpenRouter, allowing dynamic switching between LLMs at low or zero cost by injecting custom model paths and headers through a configurable LLM class instead of hardcoding providers.
+Perfect — below is the **GitHub-ready README.md with Installation & Run Steps added**, clean and copy-paste friendly.
+This is written exactly how good open-source AI repos look.
 
-This tool is built for creators and researchers who need a practical way to sift through YouTube noise without manually watching hours of footage. Instead of complex, "enterprise-grade" promises, this project offers a straightforward solution: a team of AI agents that work together to grab video transcripts and find the patterns you actually care about. By using OpenRouter as the "brain," you aren't stuck paying for expensive OpenAI credits; you can switch to free or cheaper models with one line of text. It's a low-code, hands-on way to automate your research using CrewAI agents that act as your personal research assistants, delivering clean Markdown reports directly to your dashboard.
+---
 
-🛠️ The OpenRouter + CrewAI Setup
-We use OpenRouter as a sleek method to bypass credit tiers of paid models. This allows us to use a single API key to access hundreds of models (like Claude, GPT-4o, or Gemini) just by changing a model name.
+# 🎥 CrewAI Multi-Agent YouTube Trend Analyzer (OpenRouter)
 
-How to implement custom agents: Instead of the default settings, we initialize a custom LLM object. This tells CrewAI to "talk" to OpenRouter instead of going straight to OpenAI.
+A **CrewAI-powered, multi-agent system** that automates YouTube trend and market intelligence using a **vendor-agnostic LLM architecture**.
+This project leverages **OpenRouter** to dynamically switch between powerful LLMs (GPT-4o, Claude, Gemini, Llama, etc.) at **low or zero cost**, without hard-coding any provider.
 
-Python Implementation
+---
 
+## 🚀 Why This Project?
+
+Creators and researchers often spend hours watching videos just to identify patterns.
+This tool solves that by deploying a **team of AI agents** that:
+
+* Fetch YouTube video transcripts
+* Analyze recurring themes
+* Synthesize insights into clean **Markdown reports**
+* Eliminate vendor lock-in and expensive API credits
+
+You control the system’s **“brain”** with a single config change.
+
+---
+
+## 🧠 Key Features
+
+* 🤖 CrewAI multi-agent orchestration
+* 🔌 Vendor-agnostic LLM routing via OpenRouter
+* 💸 Free & low-cost model support
+* 🔁 Swap models without refactoring
+* 📄 Auto-generated Markdown reports
+* 🧩 Modular and extensible design
+
+---
+
+## 🛠️ Tech Stack
+
+* **Python 3.10+**
+* **CrewAI**
+* **OpenRouter API**
+* **YouTube Data API v3**
+* **Mermaid (architecture diagrams)**
+
+---
+
+## ⚙️ How OpenRouter Works Here
+
+Instead of binding agents directly to OpenAI, this project initializes a **custom LLM object** inside CrewAI.
+All requests are routed through **OpenRouter**, giving access to hundreds of models using a single API key.
+
+Switch models by changing **one line**.
+
+---
+
+## 🧩 Example: Custom LLM Injection
+
+```python
 from crewai import LLM, Agent
 
-# Setup OpenRouter as your custom LLM
 my_llm = LLM(
-    model="openrouter/google/gemini-2.0-flash:free", # Pick any model from OpenRouter
+    model="openrouter/google/gemini-2.0-flash:free",
     base_url="https://openrouter.ai/api/v1",
-    api_key="your_openrouter_key"
+    api_key="YOUR_OPENROUTER_API_KEY"
 )
 
-# Assign it to your agent
 researcher = Agent(
     role="Trend Scout",
-    goal="Find 3 recurring themes in these transcripts",
-    backstory="You're a helper who summarizes videos quickly.",
-    llm=my_llm  # This makes the agent use OpenRouter
+    goal="Identify recurring themes across video transcripts",
+    backstory="You summarize and detect patterns in YouTube content.",
+    llm=my_llm
 )
-By doing this, we gain the freedom to test different "brains" for your agents without rewriting your code. You can use a heavy-duty model for deep analysis and a lighter, free model for the final summary to save money.
-## 🏗️ Project Architecture
+```
+
+---
+
+## 🏗️ System Architecture
 
 ```mermaid
 graph TD
-    subgraph "USER INTERACTION"
-    A[Enter Channel URLs & Date Range] --> B[Click Start Analysis]
+    subgraph USER_INPUT
+        A[Enter Channel URLs & Date Range] --> B[Start Analysis]
     end
 
-    subgraph "VALIDATION & INITIALIZATION"
-    B --> C[Check API Keys & Filter Channels]
-    C --> D[Initialize Session State]
+    subgraph VALIDATION
+        B --> C[Validate API Keys]
+        C --> D[Initialize Session]
     end
 
-    subgraph "DATA SCRAPING "
-    D --> E[Resolve URL to Channel ID]
-    E --> F[YouTube API Search - Up to 3 Videos]
-    F --> G[Extract Transcripts/Metadata]
-    G --> H[Save to transcripts/video_id.txt]
+    subgraph DATA_COLLECTION
+        D --> E[Resolve Channel IDs]
+        E --> F[Fetch Recent Videos]
+        F --> G[Extract Transcripts]
+        G --> H[Store Transcript Files]
     end
 
-    subgraph "CREWAI ORCHESTRATION (The Unique Core)"
-    H --> I[Load config.yaml & Custom LLMs]
-    I --> J[TASK 1: Analysis Agent - Reads Files]
-    J --> K[TASK 2: Synthesizer Agent - Final Report]
+    subgraph CREWAI_CORE
+        H --> I[Load Config & Custom LLMs]
+        I --> J[Analysis Agent]
+        J --> K[Synthesis Agent]
     end
 
-    subgraph "RESULTS DISPLAY"
-    K --> L[Show Video Previews]
-    L --> M[Display Markdown Report & Download]
+    subgraph OUTPUT
+        K --> L[Markdown Report]
+        L --> M[Preview & Download]
     end
 ```
+
+---
+
+## 🧪 Installation
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/CrewAI-MultiAgent-YouTube-Trend-Analyzer-OpenRouter.git
+cd CrewAI-MultiAgent-YouTube-Trend-Analyzer-OpenRouter
+```
+
+---
+
+### 2️⃣ Create & Activate Virtual Environment
+
+**Windows**
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+**macOS / Linux**
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+---
+
+### 3️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🔐 Environment Setup
+
+Create a `.env` file in the project root:
+
+```env
+OPENROUTER_API_KEY=your_openrouter_api_key
+YOUTUBE_API_KEY=your_youtube_data_api_key
+```
+
+> ⚠️ **Never commit `.env` files** — ensure it is listed in `.gitignore`.
+
+---
+
+## ▶️ Running the Project
+
+```bash
+python main.py
+```
+
+OR (if using Streamlit UI)
+
+```bash
+streamlit run app.py
+```
+
+The system will:
+
+1. Fetch videos from the specified channels
+2. Extract transcripts
+3. Run CrewAI agents for analysis & synthesis
+4. Generate a Markdown report with key trends
+
+---
+
+## 🧪 Use Cases
+
+* YouTube niche research
+* Creator content planning
+* Market & trend analysis
+* Academic or media research
+* AI agent experimentation
+
+---
+
+## 🔮 Future Enhancements
+
+* Streamlit / Web dashboard
+* Vector search for transcripts
+* Automatic niche clustering
+* Multi-language support
+* Scheduled trend monitoring
+
+---
+
+## 📌 Why This Matters
+
+This project demonstrates:
+
+* Real **multi-agent AI architecture**
+* Cost-aware LLM engineering
+* Vendor-agnostic design
+* Practical automation over hype
+
+Ideal for **AI portfolios, internships, and research-driven products**.
+
+---
+
+⭐ If you find this useful, consider starring the repo.
+PRs and ideas are welcome.
+
+---
+
+If you want next, I can:
+
+* Add **Docker support**
+* Write a **resume bullet version**
+* Create a **project demo GIF**
+* Optimize this README for **GitHub SEO & recruiters**
+
+Just say it.
