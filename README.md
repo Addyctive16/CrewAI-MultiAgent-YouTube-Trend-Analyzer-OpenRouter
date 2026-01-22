@@ -1,0 +1,2 @@
+# -CrewAI-MultiAgent-YouTube-Trend-Analyzer-OpenRouter-
+The YouTube Trend Analysis Agent is a CrewAI-based multi-agent system that automates YouTube market intelligence . It uses a vendor-agnostic architecture powered by OpenRouter, allowing dynamic switching between LLMs at low or zero cost by injecting custom model paths and headers through a configurable LLM class instead of hardcoding providers
