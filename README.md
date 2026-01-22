@@ -1,5 +1,3 @@
-Perfect — below is the **GitHub-ready README.md with Installation & Run Steps added**, clean and copy-paste friendly.
-This is written exactly how good open-source AI repos look.
 
 ---
 
@@ -207,22 +205,17 @@ This project demonstrates:
 * Real **multi-agent AI architecture**
 * Cost-aware LLM engineering
 * Vendor-agnostic design
-* Practical automation over hype
 
-Ideal for **AI portfolios, internships, and research-driven products**.
+
+
 
 ---
 
-⭐ If you find this useful, consider starring the repo.
 PRs and ideas are welcome.
 
 ---
 
-If you want next, I can:
 
-* Add **Docker support**
-* Write a **resume bullet version**
-* Create a **project demo GIF**
 * Optimize this README for **GitHub SEO & recruiters**
 
 Just say it.
