@@ -216,6 +216,4 @@ PRs and ideas are welcome.
 ---
 
 
-* Optimize this README for **GitHub SEO & recruiters**
 
-Just say it.
